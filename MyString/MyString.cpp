@@ -32,21 +32,46 @@ MyString::MyString(const char* initStr)
 // Конструктор копирования
 MyString::MyString(const MyString& other)
 {
+    cout << "Copy Constructor\n";
     length = strlen(other.str);  
     str = new char[length + 1];
     strcpy_s(str, length + 1, other.str);
 }
 
+// Конструктор переноса (семантика переноса)
+MyString::MyString(MyString&& other)
+{
+    cout << "Move Constructor\n";
+    str = other.str;
+    other.str = nullptr;
+}
+
+
+
 // Оператор присваивания
 MyString& MyString::operator=(const MyString& other)
 {
+    cout << "Copy = \n";
+    if (this == &other) 
+    {
+        return *this;
+    }
     if (this != &other)
     {
         delete[] str;
-        length = other.length;
-        str = new char[length + 1];
-        strcpy_s(str, length + 1, other.str);
     }
+    
+    str = new char[strlen(other.str)+1];
+    strcpy_s(str, strlen(other.str) + 1, other.str); 
+    length = other.length; 
+    return *this;
+}
+
+MyString& MyString::operator=(MyString&& other)
+{
+    cout << "Move = \n";
+    this->str = other.str;
+    other.str = nullptr;
     return *this;
 }
 

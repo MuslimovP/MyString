@@ -11,7 +11,7 @@ int main()
     MyString str2(50);
     MyString str3("Hello, World!");
      
-    str1.MyOutput(); 
+    /*str1.MyOutput(); 
     str2.MyOutput(); 
     str3.MyOutput(); 
 
@@ -43,7 +43,11 @@ int main()
     cout << "Сравнение str1 и str2: " << str1.MyStrCmp(str2) << endl;
     cout << "str1 и str2 равны: " << (str1 == str2 ? "Да" : "Нет") << endl;
     cout << "str1 < str2: " << (str1 < str2 ? "Да" : "Нет") << endl;
-    cout << "str1 > str2: " << (str1 > str2 ? "Да" : "Нет") << endl;
+    cout << "str1 > str2: " << (str1 > str2 ? "Да" : "Нет") << endl;*/
 
+    str1 = move(str3);
+    str1.MyOutput();
+    str2 = str1; 
+    str1.MyOutput(); 
     return 0;
 }

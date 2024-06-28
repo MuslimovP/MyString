@@ -19,8 +19,13 @@ public:
     // Конструктор копирования
     MyString(const MyString& other);
 
+    // Конструктор переноса (семантика переноса)
+    MyString(MyString&& other);
+
     // Оператор присваивания
     MyString& operator=(const MyString& other);
+
+    MyString& operator=(MyString&& other);
 
     // Деструктор
     ~MyString();
@@ -45,4 +50,7 @@ public:
     bool operator==(const MyString& b) const; // Сравнение строк
     bool operator<(const MyString& b) const;  // Меньше
     bool operator>(const MyString& b) const;  // Больше
+
+
+    
 };
